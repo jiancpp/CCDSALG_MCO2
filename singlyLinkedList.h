@@ -12,8 +12,10 @@ typedef struct singlyNodeTag Node;
 typedef struct singlyNodeTag* List;
 
 void freeList(List* list);
+Node* createNode(Vertex data);
 void insertAtEnd(List* list, Node* pNew);
 void deleteFromEnd(List* list);
 Node* search(List list, Vertex data);
+void freeNode(Node* node)
 
 #endif

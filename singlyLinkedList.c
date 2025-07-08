@@ -12,10 +12,10 @@ void freeList(List* list) {
     }
 }
 
-Node* createNode(Vertex data) {
+Node* createNode(String256 vertex) {
     Node* pNew;
     pNew = (Node*) malloc (sizeof(Node));
-    pNew->data = data;
+    strcpy(pNew->vertex,vertex);
     pNew->pNext = NULL; 
 
     return pNew;
@@ -54,11 +54,11 @@ void deleteFromEnd(List* list) {
     freeNode(pTemp->pNext);
 }
 
-Node* search(List list, Vertex data) {
+Node* search(List list, String256 vertex) {
     Node* pCur = list;
 
     while (pCur != NULL) {
-        if (strcmp(pCur->data.name, data.name) == 0)
+        if (strcmp(pCur->vertex, vertex) == 0)
             return pCur;
         pCur = pCur->pNext;    
     }

@@ -3,8 +3,13 @@
 
 #include "singlyLinkedList.h"
 
-void freeList(List list) {
-    list = NULL;
+void freeList(List* list) {
+    Node* pTemp;
+    while (*list != NULL) {
+        pTemp = *list;
+        *list = (*list)->pNext;
+        freeNode(pTemp);
+    }
 }
 
 Node* createNode(Vertex data) {
@@ -47,7 +52,6 @@ void deleteFromEnd(List* list) {
         pTemp = pTemp->pNext;
 
     freeNode(pTemp->pNext);
-    pTemp->pNext == NULL;
 }
 
 Node* search(List list, Vertex data) {
@@ -63,5 +67,6 @@ Node* search(List list, Vertex data) {
 }
 
 void freeNode(Node* node) {
+    free(node);
     node = NULL;
 }

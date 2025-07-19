@@ -1,6 +1,8 @@
 // Include other standard libraries here
+#include <stdbool.h>
 
 #include "heap.h"
+#include "linkedListGraph.h"
 
 /**
  * This function initializes a heap by setting the last (last index) to -1.
@@ -8,8 +10,7 @@
  */
 void initializeHeap(Heap* heap) 
 {
-    heap->capacity = MAX_CAPACITY;
-    heap->last = -1;
+    heap->heapSize = 0;
 }
 
 /**
@@ -17,29 +18,93 @@ void initializeHeap(Heap* heap)
  * @param a an element within a heap
  * @param b an element within a heap
  */
-void swap(int* a, int* b) 
+void 
+swap(Edge* a, Edge* b) 
 {
-    int temp = *a;
+    Edge temp = *a;
     *a = *b;
     *b = temp;
 }
 
-// Insert
+int 
+Parent(int idx) 
+{
+    return idx / 2;
+}
 
-// Extract Min/Max
+int
+Left(int idx)
+{
+    return idx * 2;
+}
 
-// Peek
+int
+Right(int idx)
+{
+    return idx * 2 + 1;
+}
 
+void 
+MinHeapify(Heap* heap, int idx)
+{
+    int low = idx;
+    int left = Left(idx);
+    int right = Right(idx);
 
-// Delete
+    if (left <= heap->heapSize && heap->array[left] < heap->array[idx]) {
+        low = left;
+    }
 
-// Increase/Decrease Key
+    if (right <= heap->heapSize && heap->array[right] < heap->array[low]) {
+        low = right;
+    }
 
-// Build Heap
+    if (low != idx) {
+        swap(heap->array[low], heap->array[idx]);
+        MinHeapify(heap, low); // Recursion
+    }
+}
 
+void 
+BuildMinHeap(Heap* heap, int heapSize)
+{
+    heap->heapSize = heapSize;
 
-/*
-References:
-https://www.tutorialspoint.com/data_structures_algorithms/heap_data_structure.htm
+    for (int j = heapSize / 2; j >= 1; j--) {
+        MinHeapify(heap, j);
+    }
+}
 
-*/
+bool
+isHeapEmpty(Heap* heap)
+{
+    return heap->heapSize == 0;
+}
+
+Edge 
+HeapMinimum(Heap* heap)
+{
+    if (isHeapEmpty(heap)) {
+        return;
+    }
+
+    MinHeapify(heap, 1);
+    return heap->array[1];
+}
+
+Edge 
+HeapExtractMinimum(Heap* heap)
+{
+    int first, last;
+    Edge minWeight;
+
+    first = 1;
+    last = heap->heapSize;
+    minWeight = heap->array[first];
+
+    swap(heap->array[first], heap->array[last]);
+    heap->heapSize--;
+
+    MinHeapify(heap, 1);
+    return minWeight;
+}

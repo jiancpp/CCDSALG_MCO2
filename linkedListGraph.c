@@ -11,7 +11,7 @@ freeEdgeList(EdgeList* listHead)
     while (*listHead != NULL) {
         pTemp = *listHead;
         *listHead = (*listHead)->next;
-        freeNode(pTemp);
+        freeEdgeNode(pTemp);
     }
 }
 
@@ -61,4 +61,9 @@ deleteEdgeFromStart(EdgeList* listHead)
     
 // }
 
-// void freeEdgeNode(EdgeNode* node);
+void 
+freeEdgeNode(EdgeNode* node)
+{
+    free(node);
+    node = NULL;
+}

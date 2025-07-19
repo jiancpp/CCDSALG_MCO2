@@ -14,11 +14,11 @@ struct Graph {
 typedef struct Graph Graph;
 
 // Basic Graph Instantiation
-Graph* createGraph();
-void addVertex(Graph* graph, String256 vertex);
-void addEdge(Graph* graph, String256 vertex1, String256 vertex2, int weight);
-int getDegree(Graph* graph, String256 vertex);
-bool edgeExists(Graph* graph, String256 src, String256 dest);
+Graph createGraph();
+void addVertex(Graph* graph, char* vertex);
+void addEdge(Graph* graph, char* vertex1, char* vertex2, int weight);
+int getDegree(Graph graph, char* vertex);
+bool edgeExists(Graph* graph, char* src, char* dest);
 void printGraph(Graph* graph);
 
 #endif

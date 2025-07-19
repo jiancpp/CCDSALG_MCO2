@@ -1,4 +1,5 @@
 // Include other standard libraries here
+#include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -16,7 +17,7 @@ createGraph()
 }
 
 void 
-addVertex(Graph* graph, String256 vertex)
+addVertex(Graph* graph, char* vertex)
 {
     int numVertices;
 
@@ -33,7 +34,7 @@ addVertex(Graph* graph, String256 vertex)
 }
 
 int
-getVertexIdx(Graph* graph, String256 vertex) 
+getVertexIdx(Graph* graph, char* vertex) 
 {
     for (int i = 0; i < graph->numVertices; i++) 
         if (strcmp(vertex, graph->vertexList[i].vertex) == 0)
@@ -42,9 +43,11 @@ getVertexIdx(Graph* graph, String256 vertex)
 }
 
 void 
-addEdge(Graph* graph, String256 vertex1, String256 vertex2, int weight)
+addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
 {
-    if (graph->numEdges < MAX_CAPACITY - 1)
+    if (graph->numEdges == MAX_CAPACITY - 1 ||
+        edgeExists(graph, vertex1, vertex2) ||
+        strcmp(vertex1, vertex2) == 0)
         return;
 
     int idxVertex1 = getVertexIdx(graph, vertex1);
@@ -59,20 +62,20 @@ addEdge(Graph* graph, String256 vertex1, String256 vertex2, int weight)
     EdgeNode* tempEdge1 = createEdgeNode(tempVertex2, weight);
     EdgeNode* tempEdge2 = createEdgeNode(tempVertex1, weight);
 
-    insertEdgeAtStart(tempVertex1->edgeListHead, tempEdge1);    
-    insertEdgeAtStart(tempVertex2->edgeListHead, tempEdge1);    
+    insertEdgeAtStart(&tempVertex1->edgeListHead, tempEdge1);    
+    insertEdgeAtStart(&tempVertex2->edgeListHead, tempEdge2);    
 
     graph->edgeList[graph->numEdges] = createEdge(tempVertex1, tempVertex2, weight);
     (graph->numEdges)++;
 }
 
 int 
-getDegree(Graph* graph, String256 vertex)
+getDegree(Graph graph, char* vertex)
 {
-    int vertexIdx = getVertexIdx(graph, vertex);
+    int vertexIdx = getVertexIdx(&graph, vertex);
     int degree = 0;
 
-    EdgeNode* pTemp = graph->vertexList[vertexIdx].edgeListHead;
+    EdgeNode* pTemp = graph.vertexList[vertexIdx].edgeListHead;
 
     while (pTemp != NULL) {
         pTemp = pTemp->next;
@@ -83,7 +86,7 @@ getDegree(Graph* graph, String256 vertex)
 }
 
 bool 
-edgeExists(Graph* graph, String256 src, String256 dest)
+edgeExists(Graph* graph, char* src, char* dest)
 {
     int srcIdx = getVertexIdx(graph, src);
 
@@ -102,4 +105,28 @@ edgeExists(Graph* graph, String256 src, String256 dest)
     return false;
 }
 
-void printGraph(Graph* graph);
+void 
+printGraph(Graph* graph)
+{
+    printf("G = (V, E)\n");
+
+    printf("V = {");
+    for (int i = 0; i < graph->numVertices; i++){
+        printf("%s", graph->vertexList[i]);
+
+        if (i != graph->numVertices - 1)
+            printf(", ");
+        else
+            printf("}\n");
+    }
+
+    printf("E = {\n");
+    for (int i = 0; i < graph->numEdges; i++){
+        Edge temp = graph->edgeList[i];
+        printf("     (%s, %s, %d)\n", temp.vertex_a->vertex,
+                                      temp.vertex_b->vertex,
+                                      temp.weight);
+    }
+    printf("}");
+
+}

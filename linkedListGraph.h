@@ -26,12 +26,13 @@ typedef struct VertexNode VertexNode;
 typedef struct Edge Edge;
 typedef struct EdgeNode EdgeNode;
 typedef struct EdgeNode* EdgeList;
-
+ 
 // Edge Linked List Operations
 void freeEdgeList(EdgeList* listHead);
-EdgeNode* createEdgeNode(VertexNode* adjVertex, int weight);
-void insertEdgeAtEnd(EdgeList* listHead, EdgeNode* pNew);
-void deleteEdgeFromEnd(EdgeList* list);
+Edge createEdge(Vertex* vertex1, Vertex* vertex2, int weight);
+EdgeNode* createEdgeNode(Vertex* adjVertex, int weight);
+void insertEdgeAtStart(EdgeList* listHead, EdgeNode* pNew);
+void deleteEdgeFromStart(EdgeList* list);
 EdgeNode* searchEdge(EdgeList listHead, String256 key);
 void freeEdgeNode(EdgeNode* node);
 

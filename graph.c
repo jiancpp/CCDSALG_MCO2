@@ -132,6 +132,25 @@ edgeExists(Graph* graph, char* src, char* dest)
     return false;
 }
 
+bool
+checkPath (Graph* graph, char* src, char* dest) {
+    Queue path;
+
+    int srcIdx = getVertexIdx(graph, src);
+
+    if (srcIdx == -1)
+        return false;
+
+    path = BFS(graph, src);
+
+    while (!isEmptyQueue(&path)) {
+        if (strcmp(dequeue(&path).vertex, dest) == 0)
+            return true;
+    }        
+
+    return false;
+}
+
 void 
 printGraph(Graph* graph)
 {

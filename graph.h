@@ -2,6 +2,8 @@
 #define GRAPH_H
 
 #include "shared.h"
+#include "queue.h"
+#include "traversal.h"
 #include "linkedListGraph.h"
 
 struct Graph {
@@ -20,6 +22,7 @@ int getVertexIdx(Graph* graph, char* vertex);
 void addEdge(Graph* graph, char* vertex1, char* vertex2, int weight);
 int getDegree(Graph graph, char* vertex);
 bool edgeExists(Graph* graph, char* src, char* dest);
+bool checkPath (Graph* graph, char* src, char* dest);
 void printGraph(Graph* graph);
 
 #endif

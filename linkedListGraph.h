@@ -4,25 +4,27 @@
 
 #include "shared.h"
 
+typedef struct Vertex Vertex;
+typedef struct Edge Edge;
 typedef struct EdgeNode EdgeNode;
-typedef struct Vertex {
+typedef struct EdgeNode* EdgeList;
+
+struct Vertex {
     String256 vertex;
     EdgeNode* edgeListHead; // Linked list of EdgeNode structs
-} Vertex;
+};
 
-typedef struct Edge {
+struct Edge {
     Vertex* vertex_a;
     Vertex* vertex_b;
     int weight;
-} Edge;
+};
 
-typedef struct EdgeNode {
+struct EdgeNode {
     Vertex* adjVertex;
     int weight;
     EdgeNode* next;
-} EdgeNode;
-
-typedef struct EdgeNode* EdgeList;
+};
  
 // Edge Linked List Operations
 void freeEdgeList(EdgeList* listHead);

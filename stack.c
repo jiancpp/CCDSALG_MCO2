@@ -46,10 +46,10 @@ isEmptyStack (Stack *stack)
  * @param stack the stack to be popped
  * @return popped element 
  */
-char*
+Vertex
 popStack (Stack *stack)
 {
-    char *temp = stack->collection[stack->top];
+    Vertex temp = stack->collection[stack->top];
     (stack->top)--;
     
     return temp;
@@ -61,10 +61,10 @@ popStack (Stack *stack)
  * @param item element to be pushed to the stack
  */
 void
-pushStack (Stack *stack, char* item)
+pushStack (Stack *stack, Vertex item)
 {
     (stack->top)++;
-    strcpy(stack->collection[stack->top], item);
+    stack->collection[stack->top] = item;
 }
 
 /**
@@ -72,7 +72,7 @@ pushStack (Stack *stack, char* item)
  * @param stack stack to be peeked
  * @return element at the top of the stack
  */
-char*
+Vertex
 peekStack (Stack *stack)
 {
     return stack->collection[stack->top];

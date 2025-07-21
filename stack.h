@@ -4,9 +4,10 @@
 #define CAPACITY (256);
 
 #include "shared.h"
+#include "linkedListGraph.h"
 
 typedef struct {
-    String256 collection[256];
+    Vertex collection[256];
     int top; // index of last added element
 } Stack;
 

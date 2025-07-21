@@ -31,6 +31,8 @@ addVertex(Graph* graph, char* vertex)
         graph->vertexList[numVertices] = temp;
         (graph->numVertices)++;
     }
+
+    sortVertices(graph);
 }
 
 int
@@ -40,31 +42,6 @@ getVertexIdx(Graph* graph, char* vertex)
         if (strcmp(vertex, graph->vertexList[i].vertex) == 0)
             return i;
     return -1;
-}
-
-void sortEdgeList(EdgeNode* head) {
-    EdgeNode* node;
-    Vertex* tempVertex;
-    int tempWeight, swapped;
-
-    do {
-        swapped = 0;
-        for (node = head; node && node->next; node = node->next) {
-            if (strcmp(node->adjVertex->vertex, node->next->adjVertex->vertex) > 0) {
-                // Swap adjVertex pointers
-                tempVertex = node->adjVertex;
-                node->adjVertex = node->next->adjVertex;
-                node->next->adjVertex = tempVertex;
-
-                // Swap weights too if needed to preserve edge meaning
-                tempWeight = node->weight;
-                node->weight = node->next->weight;
-                node->next->weight = tempWeight;
-
-                swapped = 1;
-            }
-        }
-    } while (swapped);
 }
 
 void 
@@ -93,6 +70,7 @@ addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
     graph->edgeList[graph->numEdges] = createEdge(tempVertex1, tempVertex2, weight);
     (graph->numEdges)++;
 
+    sortEdges(graph);
     sortEdgeList(graph->vertexList[idxVertex1].edgeListHead);
 }
 
@@ -152,6 +130,87 @@ checkPath (Graph* graph, char* src, char* dest) {
 }
 
 void 
+sortVertices(Graph* graph) {
+    int i, j, size;
+    Vertex temp;
+
+    size = graph->numVertices;
+
+    for (i = 0; i < size - 1; i++) 
+        for (j = i + 1; j < size; j++) 
+            if (strcmp(graph->vertexList[i].vertex, graph->vertexList[j].vertex) > 0) {
+                // Swap 
+                temp = graph->vertexList[i];
+                graph->vertexList[i] = graph->vertexList[j];
+                graph->vertexList[j] = temp;
+            }
+}
+
+void 
+sortEdges(Graph* graph) {
+    int i, j, size;
+    char *a1, *a2, *b1, *b2, *temp;
+    Edge tempEdge;
+
+    size = graph->numEdges;
+
+    for (i = 0; i < size - 1; i++) 
+        for (j = i + 1; j < size; j++) {
+            a1 = graph->edgeList[i].vertex_a->vertex;
+            b1 = graph->edgeList[i].vertex_b->vertex;
+            a2 = graph->edgeList[j].vertex_a->vertex;
+            b2 = graph->edgeList[j].vertex_b->vertex;
+
+            // Sort vertices within an edge
+            if (strcmp(a1, b1) > 0) { 
+                temp = a1; 
+                a1 = b1; 
+                b1 = temp; 
+            }
+
+            if (strcmp(a2, b2) > 0) { 
+                temp = a2; 
+                a2 = b2; 
+                b2 = temp; 
+            }
+
+            if (strcmp(a1, a2) > 0 || 
+               (strcmp(a1, a2) == 0 && strcmp(b1, b2) > 0)) {
+                // Swap edges
+                tempEdge = graph->edgeList[i];
+                graph->edgeList[i] = graph->edgeList[j];
+                graph->edgeList[j] = tempEdge;
+            }
+        }
+}
+
+void 
+sortEdgeList(EdgeNode* head) {
+    EdgeNode* node;
+    Vertex* tempVertex;
+    int tempWeight, swapped;
+
+    do {
+        swapped = 0;
+        for (node = head; node && node->next; node = node->next) {
+            if (strcmp(node->adjVertex->vertex, node->next->adjVertex->vertex) > 0) {
+                // Swap adjVertex pointers
+                tempVertex = node->adjVertex;
+                node->adjVertex = node->next->adjVertex;
+                node->next->adjVertex = tempVertex;
+
+                // Swap weights
+                tempWeight = node->weight;
+                node->weight = node->next->weight;
+                node->next->weight = tempWeight;
+
+                swapped = 1;
+            }
+        }
+    } while (swapped);
+}
+
+void 
 printGraph(Graph* graph)
 {
     printf("G = (V, E)\n");
@@ -174,5 +233,5 @@ printGraph(Graph* graph)
                                       temp.weight);
     }
     printf("}");
-
+    printf("\n");
 }

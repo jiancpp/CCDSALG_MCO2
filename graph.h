@@ -23,6 +23,9 @@ void addEdge(Graph* graph, char* vertex1, char* vertex2, int weight);
 int getDegree(Graph graph, char* vertex);
 bool edgeExists(Graph* graph, char* src, char* dest);
 bool checkPath (Graph* graph, char* src, char* dest);
+void sortVertices(Graph* graph);
+void sortEdges(Graph* graph);
+void sortEdgeList(EdgeNode* head);
 void printGraph(Graph* graph);
 
 #endif

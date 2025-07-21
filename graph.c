@@ -112,7 +112,7 @@ printGraph(Graph* graph)
 
     printf("V = {");
     for (int i = 0; i < graph->numVertices; i++){
-        printf("%s", graph->vertexList[i]);
+        printf("%s", graph->vertexList[i].vertex);
 
         if (i != graph->numVertices - 1)
             printf(", ");

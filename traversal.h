@@ -5,9 +5,12 @@
 #include "stack.h"
 #include "queue.h"
 #include "linkedListGraph.h"
-#include "graph.h"
+
+struct Graph;
+typedef struct Graph Graph;
+
 
 void initValues(bool array[], int size);
-Queue BFS(Graph graph, char* start); 
+Queue BFS(Graph* graph, char* start); 
 
 #endif

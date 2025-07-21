@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "graph.h"
 #include "traversal.h"
 
 void
@@ -15,10 +16,10 @@ initValues(bool array[], int size)
 }
 
 Queue
-BFS(Graph graph, char* start) 
+BFS(Graph* graph, char* start) 
 {
-    int numVertices = graph.numVertices;
-    int vertexIdx = getVertexIdx(&graph, start);
+    int numVertices = graph->numVertices;
+    int vertexIdx = getVertexIdx(graph, start);
     Queue vertexQueue, bfsOrder;
     EdgeNode *curEdgeNode;
     Vertex curVertex, *adjVertex;
@@ -30,7 +31,7 @@ BFS(Graph graph, char* start)
     initValues(isVisited, numVertices);
     
     // add start vertex
-    enqueue(&vertexQueue, graph.vertexList[vertexIdx]);
+    enqueue(&vertexQueue, graph->vertexList[vertexIdx]);
     isVisited[vertexIdx] = true;
 
     while (!isEmptyQueue(&vertexQueue)) {
@@ -40,7 +41,7 @@ BFS(Graph graph, char* start)
 
         while (curEdgeNode != NULL) {
             adjVertex = curEdgeNode->adjVertex;
-            vertexIdx = getVertexIdx(&graph, adjVertex->vertex);
+            vertexIdx = getVertexIdx(graph, adjVertex->vertex);
 
             if (!isVisited[vertexIdx]) {
                 isVisited[vertexIdx] = true;

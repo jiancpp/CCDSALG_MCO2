@@ -8,6 +8,6 @@
 #include "graph.h"
 
 void initValues(bool array[], int size);
-Queue BFS(Graph graph, Vertex start); 
+Queue BFS(Graph graph, char* start); 
 
 #endif

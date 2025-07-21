@@ -15,10 +15,10 @@ initValues(bool array[], int size)
 }
 
 Queue
-BFS(Graph graph, Vertex start) 
+BFS(Graph graph, char* start) 
 {
     int numVertices = graph.numVertices;
-    int vertexIdx;
+    int vertexIdx = getVertexIdx(&graph, start);
     Queue vertexQueue, bfsOrder;
     EdgeNode *curEdgeNode;
     Vertex curVertex, *adjVertex;
@@ -30,8 +30,8 @@ BFS(Graph graph, Vertex start)
     initValues(isVisited, numVertices);
     
     // add start vertex
-    enqueue(&vertexQueue, start);
-    isVisited[getVertexIdx(&graph, start.vertex)] = true;
+    enqueue(&vertexQueue, graph.vertexList[vertexIdx]);
+    isVisited[vertexIdx] = true;
 
     while (!isEmptyQueue(&vertexQueue)) {
         curVertex = dequeue(&vertexQueue);

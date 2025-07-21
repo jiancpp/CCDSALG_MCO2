@@ -9,6 +9,8 @@
 #include "heap.h"
 #include "graph.h"
 #include "traversal.h"
+#include "MST.h"
+#include "shortestPath.h"
 #include "linkedListGraph.h"
 
 #endif

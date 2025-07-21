@@ -31,9 +31,9 @@ int main()
 {
     String256 input;
     String256 tokens[MAX_TOKENS];
-    Queue traversal;
+    Queue traversal, path;
     Graph graph = createGraph();
-    // Graph graphMST = createGraph();
+    Graph graphMST = createGraph();
 
     while (fgets(input, sizeof(input), stdin) != NULL 
            && strcmp(input, "11\n") != 0) {
@@ -44,6 +44,7 @@ int main()
 
         tokenizeInput(input, tokens);
 
+        // Execute inputted command
         switch (atoi(tokens[0])) {
             case 1:
                 addVertex(&graph, tokens[1]);
@@ -73,15 +74,12 @@ int main()
                 printf("%d\n", checkPath(&graph, tokens[1], tokens[2]));
                 break;
             case 8:
-                // MST
-                // generateMST(&graph, &graphMST);
-                // printGraph(&graphMST);
-                // printf("Total Edge Weight: %d\n", totalEdgeWeight(&graphMST));
+                graphMST = createMST(&graph);
+                printMST(&graphMST);
                 break;
             case 9:
-                // Shortest Path
-                // printShortestPath(&graph);
-                // printf("Total edge cost: %d\n", totalEdgeCost(path));
+                path = createShortestPath(&graph, tokens[1], tokens[2]);
+                printShortestPath(path);
                 break;
             case 10:
                 printGraph(&graph);

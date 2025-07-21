@@ -72,6 +72,7 @@ addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
 
     sortEdges(graph);
     sortEdgeList(graph->vertexList[idxVertex1].edgeListHead);
+    sortEdgeList(graph->vertexList[idxVertex2].edgeListHead);
 }
 
 int 
@@ -188,24 +189,30 @@ void
 sortEdgeList(EdgeNode* head) {
     EdgeNode* node;
     Vertex* tempVertex;
-    int tempWeight, swapped;
+    int swapped, tempWeight;
+
+    if (head == NULL) 
+        return;
 
     do {
         swapped = 0;
-        for (node = head; node && node->next; node = node->next) {
+        node = head;
+
+        while (node->next != NULL) {
             if (strcmp(node->adjVertex->vertex, node->next->adjVertex->vertex) > 0) {
-                // Swap adjVertex pointers
+                // Swap adjVertex
                 tempVertex = node->adjVertex;
                 node->adjVertex = node->next->adjVertex;
                 node->next->adjVertex = tempVertex;
 
-                // Swap weights
+                // Swap weight
                 tempWeight = node->weight;
                 node->weight = node->next->weight;
                 node->next->weight = tempWeight;
 
                 swapped = 1;
             }
+            node = node->next;
         }
     } while (swapped);
 }

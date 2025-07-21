@@ -42,6 +42,18 @@ isEmptyStack (Stack *stack)
 }
 
 /**
+ * This function pushes (inserts) an item to the stack.
+ * @param stack stack to be added on
+ * @param item element to be pushed to the stack
+ */
+void
+pushStack (Stack *stack, Vertex item)
+{
+    (stack->top)++;
+    stack->collection[stack->top] = item;
+}
+
+/**
  * This function pops (removes) the element at the top of the stack and returns it.
  * @param stack the stack to be popped
  * @return popped element 
@@ -53,18 +65,6 @@ popStack (Stack *stack)
     (stack->top)--;
     
     return temp;
-}
-
-/**
- * This function pushes (inserts) an item to the stack.
- * @param stack stack to be added on
- * @param item element to be pushed to the stack
- */
-void
-pushStack (Stack *stack, Vertex item)
-{
-    (stack->top)++;
-    stack->collection[stack->top] = item;
 }
 
 /**

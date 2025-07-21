@@ -14,8 +14,8 @@ typedef struct {
 void        clearStack      (Stack *stack);
 bool        isFullStack     (Stack *stack);
 bool        isEmptyStack    (Stack *stack);
-char*       popStack        (Stack *stack);
-void        pushStack       (Stack *stack, char* item);
-char*       peekStack       (Stack *stack);
+void        pushStack       (Stack *stack, Vertex item);
+Vertex      popStack        (Stack *stack);
+Vertex      peekStack       (Stack *stack);
 
 #endif

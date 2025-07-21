@@ -13,8 +13,8 @@ typedef struct {
 void        clearQueue      (Queue *queue);
 bool        isFullQueue     (Queue *queue);
 bool        isEmptyQueue    (Queue *queue);
-void        enqueue         (Queue *queue, char* item);
-const char* dequeue         (Queue *queue);
-char*       peekQueue       (Queue *queue);
+void        enqueue         (Queue *queue, Vertex item);
+Vertex      dequeue         (Queue *queue);
+Vertex      peekQueue       (Queue *queue);
 
 #endif

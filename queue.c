@@ -47,10 +47,10 @@ isEmptyQueue (Queue *queue)
  * @param queue the queue to be dequeued
  * @return dequeued element 
  */
-const char*
+Vertex
 dequeue (Queue *queue)
 {
-    const char *temp = queue->collection[queue->head];
+    Vertex temp = queue->collection[queue->head];
     (queue->head)++;
 
     return temp;
@@ -62,11 +62,11 @@ dequeue (Queue *queue)
  * @param item element to be enqueued to the queue
  */
 void
-enqueue (Queue *queue, char* item)
+enqueue (Queue *queue, Vertex item)
 {
     // Note: Tail points to index of last added element
     (queue->tail)++; // incrementing to avoid overwriting previous element
-    strcpy (queue->collection[queue->tail], item);
+    queue->collection[queue->tail] = item;
 }
 
 /**
@@ -74,7 +74,7 @@ enqueue (Queue *queue, char* item)
  * @param queue queue to be peeked
  * @return element at the tail of the queue
  */
-char*
+Vertex
 peekQueue (Queue *queue)
 {
     return queue->collection[queue->tail];

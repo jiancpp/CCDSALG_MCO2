@@ -46,5 +46,6 @@ printMST(Graph* graph)
                                       temp.weight);
     }
     printf("}\n");
+    
     printf("Total Edge Weight: %d\n", totalEdgeWeight(graph));
 }

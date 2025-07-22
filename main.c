@@ -40,6 +40,7 @@ int main()
         
         // Initialize
         clearQueue(&traversal);
+        clearQueue(&path);
         clearTokens(tokens);
 
         tokenizeInput(input, tokens);

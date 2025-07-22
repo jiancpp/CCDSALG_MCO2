@@ -70,16 +70,16 @@ MinHeapify(Heap* heap, int idx)
     int left = Left(idx);
     int right = Right(idx);
 
-    if (left <= heap->heapSize && heap->array[left] < heap->array[idx]) {
+    if (left <= heap->heapSize && heap->array[left].weight < heap->array[idx].weight) {
         low = left;
     }
 
-    if (right <= heap->heapSize && heap->array[right] < heap->array[low]) {
+    if (right <= heap->heapSize && heap->array[right].weight < heap->array[low].weight) {
         low = right;
     }
 
     if (low != idx) {
-        swap(heap->array[low], heap->array[idx]);
+        swap(&heap->array[low], &heap->array[idx]);
         MinHeapify(heap, low); // Recursion
     }
 }
@@ -103,10 +103,6 @@ isHeapEmpty(Heap* heap)
 Edge 
 HeapMinimum(Heap* heap)
 {
-    if (isHeapEmpty(heap)) {
-        return;
-    }
-
     MinHeapify(heap, 1);
     return heap->array[1];
 }
@@ -121,7 +117,7 @@ HeapExtractMinimum(Heap* heap)
     last = heap->heapSize;
     minWeight = heap->array[first];
 
-    swap(heap->array[first], heap->array[last]);
+    swap(&heap->array[first], &heap->array[last]);
     heap->heapSize--;
 
     MinHeapify(heap, 1);

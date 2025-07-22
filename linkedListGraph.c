@@ -32,6 +32,7 @@ createEdgeNode(Vertex* adjVertex, int weight)
     EdgeNode* pNew;
     pNew = (EdgeNode*) malloc (sizeof(EdgeNode));
     pNew->adjVertex = adjVertex;
+    pNew->weight = weight;
     pNew->next = NULL; 
 
     return pNew;

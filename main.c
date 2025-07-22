@@ -31,7 +31,7 @@ int main()
 {
     String256 input;
     String256 tokens[MAX_TOKENS];
-    Queue traversal, traversal2, path;
+    Queue traversal, path;
     Graph graph = createGraph();
     Graph graphMST = createGraph();
 
@@ -40,7 +40,6 @@ int main()
         
         // Initialize
         clearQueue(&traversal);
-        clearQueue(&traversal2);
         clearQueue(&path);
         clearTokens(tokens);
 
@@ -69,7 +68,7 @@ int main()
                 break;
             case 6:
                 printf("DFS\n");
-                traversal2 = DFS(&graph, tokens[1]);
+                traversal = DFS(&graph, tokens[1]);
                 while (!isEmptyQueue(&traversal)) {
                     printf("%s\n", dequeue(&traversal).vertex);
                 }

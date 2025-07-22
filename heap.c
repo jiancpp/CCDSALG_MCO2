@@ -45,6 +45,25 @@ Right(int idx)
 }
 
 void 
+HeapInsert(Heap* heap, Edge edge) {
+    int idx;
+    
+    if (heap->heapSize >= MAX_CAPACITY - 1)
+        return;
+
+    // Insert at the end
+    heap->heapSize++;
+    idx = heap->heapSize;
+    heap->array[idx] = edge;
+
+    // Bubble up
+    while (idx > 1 && heap->array[Parent(idx)].weight > heap->array[idx].weight) {
+        swap(&heap->array[idx], &heap->array[Parent(idx)]);
+        idx = Parent(idx);
+    }
+}
+
+void 
 MinHeapify(Heap* heap, int idx)
 {
     int low = idx;

@@ -7,6 +7,7 @@ typedef struct {
     int heapSize;
 } Heap;
 
+void HeapInsert(Heap* heap, Edge edge);
 void initializeHeap(Heap* heap);
 int Parent(int idx);
 int Left(int idx);

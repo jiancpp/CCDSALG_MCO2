@@ -15,9 +15,9 @@ int main()
     addVertex(&graph, "Pichu");
 
     addEdge(&graph, "Pikachu", "Mew", 5);
-    addEdge(&graph, "Charmander", "Pikachu", 5);
+    addEdge(&graph, "Mew", "Pikachu", 5);
     addEdge(&graph, "Charmander", "Pichu", 5);
-    //addEdge(&graph, "Eevee", "Pichu", 5);
+    addEdge(&graph, "Eevee", "Pichu", 5);
     addEdge(&graph, "Eevee", "Charmander", 5);
     addEdge(&graph, "Charmander", "Mew", 5);
 
@@ -43,6 +43,14 @@ int main()
     printf("BFS\n");
     while (!isEmptyQueue(&bfs)) {
         printf("%s\n", dequeue(&bfs).vertex);
+    }
+
+    printf("\n\n");
+    Queue dfs = DFS(&graph, "Pikachu");
+
+    printf("DFS\n");
+    while (!isEmptyQueue(&dfs)) {
+        printf("%s\n", dequeue(&dfs).vertex);
     }
 
     printf("\n\n");

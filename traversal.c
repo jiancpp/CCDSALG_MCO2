@@ -54,6 +54,56 @@ BFS(Graph* graph, char* start)
 
     return bfsOrder;
 }
+
+Queue
+DFS(Graph* graph, char* start) 
+{
+    int numVertices = graph->numVertices;
+    int vertexIdx = getVertexIdx(graph, start);
+    Stack vertexStack;
+    Queue dfsOrder;
+    EdgeNode *curEdgeNode;
+    Vertex curVertex, *adjVertex;
+    bool isVisited[numVertices];
+    bool hasSuccessor;
+
+    // Initialize
+    clearStack(&vertexStack);
+    clearQueue(&dfsOrder);
+    initValues(isVisited, numVertices);
+    
+    // add start vertex
+    pushStack(&vertexStack, graph->vertexList[vertexIdx]);
+    isVisited[vertexIdx] = true;
+    enqueue(&dfsOrder, graph->vertexList[vertexIdx]);
+
+    while (!isEmptyStack(&vertexStack)) {
+        curVertex = peekStack(&vertexStack);
+        curEdgeNode = curVertex.edgeListHead;
+
+        hasSuccessor = false;
+
+        while (curEdgeNode != NULL && !hasSuccessor) {
+            adjVertex = curEdgeNode->adjVertex;
+            vertexIdx = getVertexIdx(graph, adjVertex->vertex);
+
+            if (!isVisited[vertexIdx]) {
+                isVisited[vertexIdx] = true;
+                pushStack(&vertexStack, *adjVertex);
+                enqueue(&dfsOrder, *adjVertex);
+
+                hasSuccessor = true;
+            }
+            curEdgeNode = curEdgeNode->next;
+        }
+
+        if (!hasSuccessor) {
+            popStack(&vertexStack);
+        }
+    }
+
+    return dfsOrder;
+}
 /*
 This function computes the bfs order and bfs tree of a graph starting at a 
 specific vertex.

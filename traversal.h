@@ -11,6 +11,7 @@ typedef struct Graph Graph;
 
 
 void initValues(bool array[], int size);
-Queue BFS(Graph* graph, char* start); 
+Queue BFS(Graph* graph, char* start);
+Queue DFS(Graph* graph, char* start);  
 
 #endif

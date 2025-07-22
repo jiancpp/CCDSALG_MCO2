@@ -21,12 +21,7 @@ createMST(Graph* graph)
         isVisited[i] = false;
 
     initializeHeap(&heap);
-
-    vertexIdx = 0;
-
     curVertex = &graph->vertexList[vertexIdx];
-
-
     addVertex(&graphMST, curVertex->vertex);
     isVisited[vertexIdx] = true;
 
@@ -40,7 +35,7 @@ createMST(Graph* graph)
             }
         curEdgeNode = curEdgeNode->next;
         }
-        
+
         do {
             if (heap.heapSize == 0)
                 return graphMST;

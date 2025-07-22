@@ -30,28 +30,36 @@ BFS(Graph* graph, char* start)
     clearQueue(&bfsOrder);
     initValues(isVisited, numVertices);
     
-    // add start vertex
+    // Enqueue start vertex 
     enqueue(&vertexQueue, graph->vertexList[vertexIdx]);
     isVisited[vertexIdx] = true;
 
+    // Traverse through all vertices until the queue is empty
     while (!isEmptyQueue(&vertexQueue)) {
+        // Move a vertex from the queue to the BFS order
         curVertex = dequeue(&vertexQueue);
         enqueue(&bfsOrder, curVertex);
+
+        // Get the first lexicographically adjacent vertex
         curEdgeNode = curVertex.edgeListHead;
 
+        // Go through all adjacent vertices
         while (curEdgeNode != NULL) {
             adjVertex = curEdgeNode->adjVertex;
             vertexIdx = getVertexIdx(graph, adjVertex->vertex);
 
+            // Enqueue the unvisited adjacent vertex
             if (!isVisited[vertexIdx]) {
                 isVisited[vertexIdx] = true;
                 enqueue(&vertexQueue, *adjVertex);
             }
 
+            // Move to the next adjacent node
             curEdgeNode = curEdgeNode->next;
         }
     }
 
+    // Return the BFS order stored through a queue
     return bfsOrder;
 }
 /*
@@ -161,15 +169,4 @@ function dfs(G,start) {
 
    return dfs_order and/or dfs_tree
 }
-*/
-
-/*
-Getting MST
-- Connecting everything with everything else with Minimum weight
-
-Sort edges by weight before doing prim's algo
-
-while no. of edges is less than n minus one
-
-union find disjoint set for crosscalsssssss cycle checking
 */

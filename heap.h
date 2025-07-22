@@ -2,6 +2,8 @@
 #define HEAP_H
 
 #include "shared.h"
+#include "linkedListGraph.h"
+
 typedef struct {
     Edge array[MAX_CAPACITY]; // Indexing will start at 1
     int heapSize;

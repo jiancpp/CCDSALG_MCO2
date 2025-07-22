@@ -31,7 +31,9 @@ int main()
 {
     String256 input;
     String256 tokens[MAX_TOKENS];
-    Queue traversal, path;
+    Queue traversal;
+    Stack path;
+    int totalCost;
     Graph graph = createGraph();
     Graph graphMST = createGraph();
 
@@ -40,7 +42,7 @@ int main()
         
         // Initialize
         clearQueue(&traversal);
-        clearQueue(&path);
+        clearStack(&path);
         clearTokens(tokens);
 
         tokenizeInput(input, tokens);
@@ -81,8 +83,8 @@ int main()
                 printMST(&graphMST);
                 break;
             case 9:
-                path = createShortestPath(&graph, tokens[1], tokens[2]);
-                printShortestPath(path);
+                path = createShortestPath(&graph, tokens[1], tokens[2], &totalCost);
+                printShortestPath(path, totalCost);
                 break;
             case 10:
                 printGraph(&graph);

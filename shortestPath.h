@@ -3,14 +3,22 @@
 
 #include "shared.h"
 #include "heap.h"
-#include "queue.h"
+#include "stack.h"
+#include "traversal.h"
 #include "linkedListGraph.h"
+
+struct Path {
+    int cost;
+    Vertex* prev;
+};
 
 struct Graph;
 typedef struct Graph Graph;
+typedef struct Path Path;
 
-Queue createShortestPath(Graph* graph, char* src, char* dest);
-int totalEdgeCost(Queue path);
-void printShortestPath(Queue path);
+void addPathStart(Path* pathList[], Graph* graph, char* src);
+void getMinPaths(Path pathList[], Graph* graph, char* src);
+Stack createShortestPath(Graph* graph, char* src, char* dest, int* cost);
+void printShortestPath(Stack path, int totalCost);
 
 #endif

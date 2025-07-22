@@ -16,7 +16,6 @@ struct Graph;
 typedef struct Graph Graph;
 typedef struct Path Path;
 
-void addPathStart(Path* pathList[], Graph* graph, char* src);
 void getMinPaths(Path pathList[], Graph* graph, char* src);
 Stack createShortestPath(Graph* graph, char* src, char* dest, int* cost);
 void printShortestPath(Stack path, int totalCost);

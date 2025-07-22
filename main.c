@@ -31,7 +31,7 @@ int main()
 {
     String256 input;
     String256 tokens[MAX_TOKENS];
-    Queue traversal, path;
+    Queue traversal, traversal2, path;
     Graph graph = createGraph();
     Graph graphMST = createGraph();
 
@@ -40,6 +40,7 @@ int main()
         
         // Initialize
         clearQueue(&traversal);
+        clearQueue(&traversal2);
         clearQueue(&path);
         clearTokens(tokens);
 
@@ -60,16 +61,18 @@ int main()
                 printf("%d\n", edgeExists(&graph, tokens[1], tokens[2]));
                 break;
             case 5:
+                printf("BFS\n");
                 traversal = BFS(&graph, tokens[1]);
                 while (!isEmptyQueue(&traversal)) {
                     printf("%s\n", dequeue(&traversal).vertex);
                 }
                 break;
             case 6:
-                // traversal = DFS(&graph, tokens[1]);
-                // while (!isEmptyQueue(&traversal)) {
-                //     printf("%s\n", dequeue(&traversal).vertex);
-                // }
+                printf("DFS\n");
+                traversal2 = DFS(&graph, tokens[1]);
+                while (!isEmptyQueue(&traversal)) {
+                    printf("%s\n", dequeue(&traversal).vertex);
+                }
                 break;
             case 7:
                 printf("%d\n", checkPath(&graph, tokens[1], tokens[2]));

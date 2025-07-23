@@ -1,6 +1,7 @@
 // Include other standard libraries here
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 #include "graph.h"
 #include "MST.h"
@@ -11,6 +12,7 @@ createMST(Graph* graph)
     Graph graphMST = createGraph();
     Heap heap;
     int i, idxA, idxB, vertexIdx = 0;
+    String256 a, b;
     Edge tempEdge, minEdge;
     EdgeNode *curEdgeNode;
     Vertex *curVertex;
@@ -33,7 +35,7 @@ createMST(Graph* graph)
                 tempEdge = createEdge(curVertex, curEdgeNode->adjVertex, curEdgeNode->weight);
                 HeapInsert(&heap, tempEdge);
             }
-        curEdgeNode = curEdgeNode->next;
+            curEdgeNode = curEdgeNode->next;
         }
 
         do {
@@ -45,22 +47,22 @@ createMST(Graph* graph)
             idxA = getVertexIdx(graph, minEdge.vertex_a->vertex);
             idxB = getVertexIdx(graph, minEdge.vertex_b->vertex);
 
-        } while (isVisited[idxA] && isVisited[idxB]);
+        } while (isVisited[idxB]);
 
-        if (!isVisited[idxA]) {
-            addVertex(&graphMST, minEdge.vertex_a->vertex);
-            curVertex = &graph->vertexList[idxA];
-            isVisited[idxA] = true;
-
-        } else {
+        if (!isVisited[idxB]) {
             addVertex(&graphMST, minEdge.vertex_b->vertex);
             curVertex = &graph->vertexList[idxB];
             isVisited[idxB] = true;
         }
 
-        graphMST.edgeList[graphMST.numEdges] = createEdge(minEdge.vertex_a, minEdge.vertex_b, minEdge.weight);
-        graphMST.numEdges++;
+        idxA = getVertexIdx(&graphMST, minEdge.vertex_a->vertex);
+        idxB = getVertexIdx(&graphMST, minEdge.vertex_b->vertex);
+        strcpy(a, graphMST.vertexList[idxA].vertex);
+        strcpy(b, graphMST.vertexList[idxB].vertex);
+
+        addEdge(&graphMST, a, b, minEdge.weight);
     }
+
     return graphMST;
 }
 
@@ -78,11 +80,19 @@ totalEdgeWeight(Graph* graph)
 void
 printMST(Graph* graph) 
 {
-    printf("MST(G) = (V, E).\n");
+    String256 vertices[graph->numVertices];
+
+    for (int i = 0; i < graph->numVertices; i++) {
+        strcpy(vertices[i], graph->vertexList[i].vertex);
+    }
+
+    sortVertices(vertices, graph->numVertices);
+
+    printf("MST(G) = (V, E)\n");
 
     printf("V = {");
     for (int i = 0; i < graph->numVertices; i++){
-        printf("%s", graph->vertexList[i].vertex);
+        printf("%s", vertices[i]);
 
         if (i != graph->numVertices - 1)
             printf(", ");

@@ -28,9 +28,7 @@ getMinPaths(Path pathList[], Graph* graph, char* src)
 
     curIdx = getVertexIdx(graph, src);
 
-    tempEdge.vertex_a = &graph->vertexList[curIdx];
-    tempEdge.vertex_b = &graph->vertexList[curIdx];
-    tempEdge.weight = 0;
+    tempEdge = createEdge(&graph->vertexList[curIdx], &graph->vertexList[curIdx], 0);
 
     // Add source heap and path list
     HeapInsert(&minHeap, tempEdge);
@@ -56,8 +54,7 @@ getMinPaths(Path pathList[], Graph* graph, char* src)
                 pathList[adjIdx].cost = pathList[curIdx].cost + weight;
                 pathList[adjIdx].prev = curEdge.vertex_b;
 
-                tempEdge.vertex_a = curEdge.vertex_b;
-                tempEdge.vertex_b = &graph->vertexList[adjIdx];
+                tempEdge = createEdge(curEdge.vertex_b, &graph->vertexList[adjIdx], pathList[adjIdx].cost);
                 HeapInsert(&minHeap, tempEdge);
             }
 

@@ -62,14 +62,14 @@ int main()
                 printf("%d\n", edgeExists(&graph, tokens[1], tokens[2]));
                 break;
             case 5:
-                printf("BFS\n");
+                printf("<< BFS >>\n");
                 traversal = BFS(&graph, tokens[1]);
                 while (!isEmptyQueue(&traversal)) {
                     printf("%s\n", dequeue(&traversal).vertex);
                 }
                 break;
             case 6:
-                printf("DFS\n");
+                printf("<< DFS >>\n");
                 traversal = DFS(&graph, tokens[1]);
                 while (!isEmptyQueue(&traversal)) {
                     printf("%s\n", dequeue(&traversal).vertex);

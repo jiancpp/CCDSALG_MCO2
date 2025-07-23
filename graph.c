@@ -31,8 +31,6 @@ addVertex(Graph* graph, char* vertex)
         graph->vertexList[numVertices] = temp;
         (graph->numVertices)++;
     }
-
-    sortVertices(graph);
 }
 
 int
@@ -131,49 +129,46 @@ checkPath (Graph* graph, char* src, char* dest) {
 }
 
 void 
-sortVertices(Graph* graph) {
-    int i, j, size;
-    Vertex temp;
-
-    size = graph->numVertices;
+sortVertices(String256 vertices[], int size) {
+    int i, j;
+    String256 temp;
 
     for (i = 0; i < size - 1; i++) 
         for (j = i + 1; j < size; j++) 
-            if (strcmp(graph->vertexList[i].vertex, graph->vertexList[j].vertex) > 0) {
+            if (strcmp(vertices[i], vertices[j]) > 0) {
                 // Swap 
-                temp = graph->vertexList[i];
-                graph->vertexList[i] = graph->vertexList[j];
-                graph->vertexList[j] = temp;
+                strcpy(temp, vertices[i]);
+                strcpy(vertices[i], vertices[j]);
+                strcpy(vertices[j], temp);
             }
 }
 
 void 
 sortEdges(Graph* graph) {
-    int i, j, size;
-    char *a1, *a2, *b1, *b2, *temp;
+    int i, j, numEdges;
+    char *a1, *a2, *b1, *b2;
+    Vertex* tempVertex;
     Edge tempEdge;
 
-    size = graph->numEdges;
+    numEdges = graph->numEdges;
 
-    for (i = 0; i < size - 1; i++) 
-        for (j = i + 1; j < size; j++) {
+
+    for (i = 0; i < numEdges; i++) {
+        // Sort vertices within an edge
+        if (strcmp(graph->edgeList[i].vertex_a->vertex, graph->edgeList[i].vertex_b->vertex) > 0) {
+            tempVertex = graph->edgeList[i].vertex_a;
+            graph->edgeList[i].vertex_a = graph->edgeList[i].vertex_b;
+            graph->edgeList[i].vertex_b = tempVertex;
+        }
+    }
+
+    // Sort edges
+    for (i = 0; i < numEdges - 1; i++) {
+        for (j = i + 1; j < graph->numEdges; j++) {
             a1 = graph->edgeList[i].vertex_a->vertex;
             b1 = graph->edgeList[i].vertex_b->vertex;
             a2 = graph->edgeList[j].vertex_a->vertex;
             b2 = graph->edgeList[j].vertex_b->vertex;
-
-            // Sort vertices within an edge
-            if (strcmp(a1, b1) > 0) { 
-                temp = a1; 
-                a1 = b1; 
-                b1 = temp; 
-            }
-
-            if (strcmp(a2, b2) > 0) { 
-                temp = a2; 
-                a2 = b2; 
-                b2 = temp; 
-            }
 
             if (strcmp(a1, a2) > 0 || 
                (strcmp(a1, a2) == 0 && strcmp(b1, b2) > 0)) {
@@ -183,6 +178,7 @@ sortEdges(Graph* graph) {
                 graph->edgeList[j] = tempEdge;
             }
         }
+    }
 }
 
 void 
@@ -220,11 +216,19 @@ sortEdgeList(EdgeNode* head) {
 void 
 printGraph(Graph* graph)
 {
+    String256 vertices[graph->numVertices];
+
+    for (int i = 0; i < graph->numVertices; i++) {
+        strcpy(vertices[i], graph->vertexList[i].vertex);
+    }
+
+    sortVertices(vertices, graph->numVertices);
+
     printf("G = (V, E)\n");
 
     printf("V = {");
     for (int i = 0; i < graph->numVertices; i++){
-        printf("%s", graph->vertexList[i].vertex);
+        printf("%s", vertices[i]);
 
         if (i != graph->numVertices - 1)
             printf(", ");

@@ -79,8 +79,10 @@ createShortestPath(Graph* graph, char* src, char* dest, int* cost)
     
     idx = getVertexIdx(graph, dest);
 
-    if (pathList[idx].cost == -1)
+    if (pathList[idx].cost == INT_MAX) {
+        *cost = 0;
         return path;
+    }
     
     *cost = pathList[idx].cost;
 
@@ -100,9 +102,12 @@ createShortestPath(Graph* graph, char* src, char* dest, int* cost)
 void
 printShortestPath(Stack path, int totalCost)
 {
-    printf("%s", popStack(&path).vertex);
-    while (!isEmptyStack(&path)) {
-        printf(" -> %s", popStack(&path).vertex);
-    }
-    printf("; Total edge cost: %d\n", totalCost);
+    if (!isEmptyStack(&path)) {
+        printf("%s", popStack(&path).vertex);
+        while (!isEmptyStack(&path)) {
+            printf(" -> %s", popStack(&path).vertex);
+        }
+        printf("; Total edge cost: %d\n", totalCost);
+    } else
+        printf("Path not found.\n");
 }

@@ -9,8 +9,8 @@
 /**
  * Initializes a boolean array by setting all elements to false.
  *
- * @param array - the boolean array to initialize
- * @param size - the number of elements in the array
+ * @param array the boolean array to initialize
+ * @param size the number of elements in the array
  */
 void
 initValues(bool array[], int size)
@@ -25,8 +25,8 @@ initValues(bool array[], int size)
  * Performs a Breadth-First Search (BFS) traversal starting from a given vertex
  * and returns the order of visited vertices in a queue. 
  *
- * @param graph - pointer to the graph structure
- * @param start - the starting vertex for the traversal
+ * @param graph pointer to the graph structure
+ * @param start the starting vertex for the traversal
  * @return a queue containing vertices in BFS order
  */
 Queue
@@ -77,6 +77,14 @@ BFS(Graph* graph, char* start)
     return bfsOrder;
 }
 
+/**
+ * Performs a Depth-First Search (DFS) traversal starting from a given vertex
+ * and returns the order of visited vertices in a queue. 
+ *
+ * @param graph pointer to the graph structure
+ * @param start the starting vertex for the traversal
+ * @return a queue containing vertices in DFS order
+ */
 Queue
 DFS(Graph* graph, char* start) 
 {
@@ -94,21 +102,25 @@ DFS(Graph* graph, char* start)
     clearQueue(&dfsOrder);
     initValues(isVisited, numVertices);
     
-    // add start vertex
+    // Push start vertex
     pushStack(&vertexStack, graph->vertexList[vertexIdx]);
     isVisited[vertexIdx] = true;
     enqueue(&dfsOrder, graph->vertexList[vertexIdx]);
 
+    // Traverse through all vertices until the stack is empty
     while (!isEmptyStack(&vertexStack)) {
+
         curVertex = peekStack(&vertexStack);
         curEdgeNode = curVertex.edgeListHead;
 
         hasSuccessor = false;
 
+        // Go through each adjacent vertex until an unvisited one is found
         while (curEdgeNode != NULL && !hasSuccessor) {
             adjVertex = curEdgeNode->adjVertex;
             vertexIdx = getVertexIdx(graph, adjVertex->vertex);
 
+            // Push and enqueue unvisited vertex
             if (!isVisited[vertexIdx]) {
                 isVisited[vertexIdx] = true;
                 pushStack(&vertexStack, *adjVertex);
@@ -116,6 +128,7 @@ DFS(Graph* graph, char* start)
 
                 hasSuccessor = true;
             }
+            // Move to the next adjacent node
             curEdgeNode = curEdgeNode->next;
         }
 

@@ -6,6 +6,12 @@
 #include "graph.h"
 #include "traversal.h"
 
+/**
+ * Initializes a boolean array by setting all elements to false.
+ *
+ * @param array - the boolean array to initialize
+ * @param size - the number of elements in the array
+ */
 void
 initValues(bool array[], int size)
 {
@@ -15,6 +21,14 @@ initValues(bool array[], int size)
         array[i] = false;
 }
 
+/**
+ * Performs a Breadth-First Search (BFS) traversal starting from a given vertex
+ * and returns the order of visited vertices in a queue. 
+ *
+ * @param graph - pointer to the graph structure
+ * @param start - the starting vertex for the traversal
+ * @return a queue containing vertices in BFS order
+ */
 Queue
 BFS(Graph* graph, char* start) 
 {

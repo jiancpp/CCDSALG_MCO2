@@ -109,24 +109,36 @@ edgeExists(Graph* graph, char* src, char* dest)
     return false;
 }
 
-bool
-checkPath (Graph* graph, char* src, char* dest) {
+/**
+ * Checks if a path exists between two vertices in a graph using BFS.
+ *
+ * @param graph - pointer to the graph structure
+ * @param src - the source vertex 
+ * @param dest - the destination vertex
+ * @return true if a path exists from src to dest, false otherwise
+ */
+bool checkPath(Graph* graph, char* src, char* dest) {
     Queue path;
 
+    // Get index of the source vertex
     int srcIdx = getVertexIdx(graph, src);
 
     if (srcIdx == -1)
         return false;
 
+    // Perform BFS starting from the source vertex
     path = BFS(graph, src);
 
+    // Check if destination vertex appears in the BFS traversal
     while (!isEmptyQueue(&path)) {
         if (strcmp(dequeue(&path).vertex, dest) == 0)
             return true;
     }        
 
+    // Destination not found in the path
     return false;
 }
+
 
 void 
 sortVertices(String256 vertices[], int size) {

@@ -263,7 +263,7 @@ sortEdgeList(EdgeNode* head) {
 void 
 printGraph(Graph* graph)
 {
-    String256 vertices[graph->numVertices];
+    String256 vertices[MAX_CAPACITY];
 
     for (int i = 0; i < graph->numVertices; i++) {
         strcpy(vertices[i], graph->vertexList[i].vertex);

@@ -6,6 +6,11 @@
 
 #include "graph.h"
 
+/**
+ * This function creates an initialized Graph struct
+ * 
+ * @return Graph struct
+ */
 Graph 
 createGraph()
 {
@@ -16,6 +21,12 @@ createGraph()
     return temp;
 }
 
+/**
+ * This function add a new vertex to the graph
+ * 
+ * @param graph - pointer to the graph struct
+ * @param vertex - name of the vertex to be added
+ */
 void 
 addVertex(Graph* graph, char* vertex)
 {
@@ -33,6 +44,14 @@ addVertex(Graph* graph, char* vertex)
     }
 }
 
+/**
+ * This function searches a vertex through the graph's array of vertices and
+ * returns its index.
+ * 
+ * @param graph - pointer to the graph struct
+ * @param vertex - name of vertex being searched
+ * @return index of the vertex; -1 if not found
+ */
 int
 getVertexIdx(Graph* graph, char* vertex) 
 {
@@ -42,9 +61,19 @@ getVertexIdx(Graph* graph, char* vertex)
     return -1;
 }
 
+/**
+ * This function add a new edge connecting two different
+ * vertices in the graph
+ * 
+ * @param graph - pointer to the graph struct
+ * @param vertex1 - name of the first vertex
+ * @param vertex2 - name of the second vertex
+ * @param weight - weight of the edge
+ */
 void 
 addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
 {
+    // Check whether inputs are valid
     if (graph->numEdges == MAX_CAPACITY - 1 ||
         edgeExists(graph, vertex1, vertex2) ||
         strcmp(vertex1, vertex2) == 0)
@@ -53,9 +82,11 @@ addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
     int idxVertex1 = getVertexIdx(graph, vertex1);
     int idxVertex2 = getVertexIdx(graph, vertex2);
 
+    // Check whether both vertices were found
     if (idxVertex1 == -1 || idxVertex2 == -1)
         return;
 
+    // Add edge nodes both vertices' edge list
     Vertex* tempVertex1 = &graph->vertexList[idxVertex1];
     Vertex* tempVertex2 = &graph->vertexList[idxVertex2];
 
@@ -65,6 +96,7 @@ addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
     insertEdgeAtStart(&tempVertex1->edgeListHead, tempEdge1);    
     insertEdgeAtStart(&tempVertex2->edgeListHead, tempEdge2);    
 
+    // Add edge to graph's edge list
     graph->edgeList[graph->numEdges] = createEdge(tempVertex1, tempVertex2, weight);
     (graph->numEdges)++;
 
@@ -78,6 +110,9 @@ getDegree(Graph graph, char* vertex)
 {
     int vertexIdx = getVertexIdx(&graph, vertex);
     int degree = 0;
+
+    if (vertexIdx == -1)
+        return;
 
     EdgeNode* pTemp = graph.vertexList[vertexIdx].edgeListHead;
 

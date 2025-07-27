@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "graph.h"
 #include "MST.h"
@@ -23,13 +24,15 @@ createMST(Graph* graph)
     Edge tempEdge, minEdge;
     EdgeNode *curEdgeNode;
     Vertex *curVertex;
-    bool isVisited[graph->numVertices]; // Stores whether a vertex has been visited or not
+    bool isVisited[MAX_CAPACITY]; // Stores whether a vertex has been visited or not
 
     // Initializes
     for (i = 0; i < graph->numVertices; i++)
         isVisited[i] = false;
 
     initializeHeap(&heap);
+
+    // Step 1: Determine an arbitrary vertex as the starting vertex of the MST.
     curVertex = &graph->vertexList[vertexIdx];
     addVertex(&graphMST, curVertex->vertex); // Adds first vertex
     isVisited[vertexIdx] = true;
@@ -100,7 +103,7 @@ totalEdgeWeight(Graph* graph)
 void
 printMST(Graph* graph) 
 {
-    String256 vertices[graph->numVertices];
+    String256 vertices[MAX_CAPACITY];
 
     // Stores vertex names in array
     for (int i = 0; i < graph->numVertices; i++) {

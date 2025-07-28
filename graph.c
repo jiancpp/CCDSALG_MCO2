@@ -112,7 +112,7 @@ getDegree(Graph graph, char* vertex)
     int degree = 0;
 
     if (vertexIdx == -1)
-        return;
+        return 0;
 
     EdgeNode* pTemp = graph.vertexList[vertexIdx].edgeListHead;
 

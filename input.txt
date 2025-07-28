@@ -18,6 +18,9 @@
 1 Hitmonchan
 1 Lapras
 1 Ditto
+1 Maria
+1 Clara
+2 Maria Clara 3
 2 Meowth Ditto 15
 2 Meowth Bulbasaur 4
 2 Meowth Psyduck 19
@@ -63,6 +66,8 @@
 2 Machop Lapras 5
 2 Lapras Hitmonchan 13
 2 Hitmonlee Hitmonchan 10
+3 Maria
+3 Clara
 3 Pikachu
 3 Charmander
 3 Bulbasaur

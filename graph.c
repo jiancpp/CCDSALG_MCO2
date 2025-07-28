@@ -111,6 +111,13 @@ addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
     sortEdgeList(graph->vertexList[idxVertex2].edgeListHead);
 }
 
+/**
+ * Computes the degree (number of adjacent edges) of a given vertex.
+ * 
+ * @param graph - Graph by value
+ * @param vertex - name of the vertex
+ * @return Degree of the vertex; 0 if not found
+ */
 int 
 getDegree(Graph graph, char* vertex)
 {
@@ -130,6 +137,14 @@ getDegree(Graph graph, char* vertex)
     return degree;
 }
 
+/**
+ * Checks if an edge exists between two vertices.
+ * 
+ * @param graph - pointer to the Graph struct
+ * @param src - source vertex
+ * @param dest - destination vertex
+ * @return true if the edge exists; false otherwise
+ */
 bool 
 edgeExists(Graph* graph, char* src, char* dest)
 {
@@ -158,7 +173,8 @@ edgeExists(Graph* graph, char* src, char* dest)
  * @param dest - the destination vertex
  * @return true if a path exists from src to dest, false otherwise
  */
-bool checkPath(Graph* graph, char* src, char* dest) {
+bool 
+checkPath(Graph* graph, char* src, char* dest) {
     Queue path;
 
     // Get index of the source vertex
@@ -180,6 +196,12 @@ bool checkPath(Graph* graph, char* src, char* dest) {
     return false;
 }
 
+/**
+ * Sorts an array of vertex names lexicographically.
+ * 
+ * @param vertices - array of vertex names
+ * @param size - number of vertices
+ */
 
 void 
 sortVertices(String256 vertices[], int size) {
@@ -196,6 +218,12 @@ sortVertices(String256 vertices[], int size) {
             }
 }
 
+
+/**
+ * Sorts the graph's edge list in lexicographic order by vertex names.
+ * 
+ * @param graph - pointer to the Graph struct
+ */
 void 
 sortEdges(Graph* graph) {
     int i, j, numEdges;
@@ -223,6 +251,12 @@ sortEdges(Graph* graph) {
     }
 }
 
+
+/**
+ * Sorts an edge list alphabetically by adjacent vertex name.
+ * 
+ * @param head - pointer to the head of the edge list
+ */
 void 
 sortEdgeList(EdgeNode* head) {
     EdgeNode* node;
@@ -255,6 +289,12 @@ sortEdgeList(EdgeNode* head) {
     } while (swapped);
 }
 
+
+/**
+ * Prints the graph in adjacency list and edge list format.
+ * 
+ * @param graph - pointer to the Graph struct
+ */
 void 
 printGraph(Graph* graph)
 {

@@ -24,7 +24,7 @@ getMinPaths(Path pathList[], Graph* graph, char* src)
     Edge curEdge, tempEdge;
     EdgeNode* adjNode;
     Heap minHeap;
-    bool isVisited[numVertices];
+    bool isVisited[MAX_CAPACITY];
 
     // Initialize
     initValues(isVisited, numVertices);
@@ -93,7 +93,7 @@ createShortestPath(Graph* graph, char* src, char* dest, int* cost)
 {
     int idx;
     Stack path;
-    Path pathList[graph->numVertices];
+    Path pathList[MAX_CAPACITY];
 
     // Initialize
     clearStack(&path);

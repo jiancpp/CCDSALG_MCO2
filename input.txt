@@ -1,30 +1,108 @@
-1 Sonic
-1 Knuckles
-1 Maria
-1 Shadow
-1 Tails
-1 Eggman
-2 Sonic Tails 10
-2 Knuckles Sonic 8
-2 Knuckles Tails 7
-2 Shadow Sonic 8
-2 Maria Shadow 10
-2 Eggman Shadow 1
-10
-3 Sonic
-3 Knuckles
-3 Tails
-3 Eggman
-3 Shadow
-4 Sonic Tails
-4 Maria Tails
-5 Sonic
-5 Eggman
-6 Sonic
-6 Eggman
-7 Shadow Eggman
-7 Eggman Sonic
+1 Pikachu
+1 Charmander
+1 Bulbasaur
+1 Squirtle
+1 Eevee
+1 Jigglypuff
+1 Meowth
+1 Psyduck
+1 Snorlax
+1 Magikarp
+1 Gengar
+1 Kadabra
+1 Machop
+1 Geodude
+1 Mewtwo
+1 Clefairy
+1 Hitmonlee
+1 Hitmonchan
+1 Lapras
+1 Ditto
+2 Meowth Ditto 15
+2 Meowth Bulbasaur 4
+2 Meowth Psyduck 19
+2 Meowth Mewtwo 1
+2 Ditto Charmander 18
+2 Ditto Pikachu 1
+2 Ditto Bulbasaur 4
+2 Bulbasaur Psyduck 10
+2 Bulbasaur Snorlax 8
+2 Bulbasaur Pikachu 1
+2 Bulbasaur Eevee 15
+2 Bulbasaur Squirtle 13
+2 Psyduck Mewtwo 12
+2 Psyduck Jigglypuff 11
+2 Psyduck Snorlax 13
+2 Mewtwo Jigglypuff 15
+2 Charmander Pikachu 18
+2 Charmander Squirtle 14
+2 Charmander Magikarp 2
+2 Charmander Gengar 11
+2 Charmander Kadabra 6
+2 Pikachu Squirtle 4
+2 Snorlax Eevee 18
+2 Snorlax Jigglypuff 6
+2 Snorlax Clefairy 19
+2 Eevee Squirtle 10
+2 Eevee Clefairy 8
+2 Squirtle Magikarp 13
+2 Squirtle Geodude 1
+2 Magikarp Gengar 10
+2 Magikarp Geodude 15
+2 Magikarp Machop 3
+2 Gengar Kadabra 13
+2 Gengar Machop 7
+2 Kadabra Machop 17
+2 Kadabra Lapras 18
+2 Clefairy Geodude 7
+2 Clefairy Hitmonlee 20
+2 Geodude Machop 16
+2 Geodude Hitmonlee 19
+2 Machop Hitmonlee 9
+2 Machop Hitmonchan 8
+2 Machop Lapras 5
+2 Lapras Hitmonchan 13
+2 Hitmonlee Hitmonchan 10
+3 Pikachu
+3 Charmander
+3 Bulbasaur
+3 Squirtle
+3 Eevee
+3 Jigglypuff
+3 Meowth
+3 Psyduck
+3 Snorlax
+3 Magikarp
+3 Gengar
+3 Kadabra
+3 Machop
+3 Geodude
+3 Mewtwo
+3 Clefairy
+3 Hitmonlee
+3 Hitmonchan
+3 Lapras
+3 Ditto
+4 Meowth Ditto
+4 Pikachu Magikarp
+4 Machop Clefairy
+4 Psyduck Bulbasaur
+4 Bulbasaur Snorlax
+5 Pikachu
+5 Squirtle
+6 Magikarp
+6 Kadabra
+7 Pikachu Snorlax
+7 Charmander Magikarp
+7 Bulbasaur Gengar
+7 Squirtle Kadabra
+7 Eevee Machop
 8
-9 Sonic Shadow
-9 Maria Knuckles
+9 Squirtle Magikarp
+9 Machop Snorlax
+9 Pikachu Squirtle
+9 Bulbasaur Gengar
+9 Ditto Hitmonchan
+9 Meowth Hitmonlee
+10
 11

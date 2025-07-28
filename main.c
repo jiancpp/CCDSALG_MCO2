@@ -39,7 +39,9 @@ int main()
 
     while (fgets(input, sizeof(input), stdin) != NULL 
            && strcmp(input, "11\n") != 0) {
-        
+
+        printf("%s", input);
+            
         // Initialize
         clearQueue(&traversal);
         clearStack(&path);
@@ -62,14 +64,12 @@ int main()
                 printf("%d\n", edgeExists(&graph, tokens[1], tokens[2]));
                 break;
             case 5:
-                printf("<< BFS >>\n");
                 traversal = BFS(&graph, tokens[1]);
                 while (!isEmptyQueue(&traversal)) {
                     printf("%s\n", dequeue(&traversal).vertex);
                 }
                 break;
             case 6:
-                printf("<< DFS >>\n");
                 traversal = DFS(&graph, tokens[1]);
                 while (!isEmptyQueue(&traversal)) {
                     printf("%s\n", dequeue(&traversal).vertex);
@@ -92,7 +92,8 @@ int main()
             default:
                 break;
         }
-    }
 
+        printf("\n");
+    }
     return 0;
 }

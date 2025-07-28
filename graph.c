@@ -97,7 +97,7 @@ addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
     insertEdgeAtStart(&tempVertex2->edgeListHead, tempEdge2);    
 
     // Add edge to graph's edge list (Arrange lexicographically)
-    if (strcmp(tempVertex1, tempVertex2) < 0) {
+    if (strcmp(tempVertex1->vertex, tempVertex2->vertex) < 0) {
         graph->edgeList[graph->numEdges] = createEdge(tempVertex1, tempVertex2, weight);
     }
     else {

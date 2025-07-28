@@ -2,7 +2,6 @@
 #define SINGLYLINKEDLIST_H
 
 #include "shared.h"
-#include "graph.h"
 
 struct singlyNodeTag {
     String256 vertex;

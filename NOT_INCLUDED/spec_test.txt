@@ -1,0 +1,30 @@
+1 Sonic
+1 Knuckles
+1 Maria
+1 Shadow
+1 Tails
+1 Eggman
+2 Sonic Tails 10
+2 Knuckles Sonic 8
+2 Knuckles Tails 7
+2 Shadow Sonic 8
+2 Maria Shadow 10
+2 Eggman Shadow 1
+10
+3 Sonic
+3 Knuckles
+3 Tails
+3 Eggman
+3 Shadow
+4 Sonic Tails
+4 Maria Tails
+5 Sonic
+5 Eggman
+6 Sonic
+6 Eggman
+7 Shadow Eggman
+7 Eggman Sonic
+8
+9 Sonic Shadow
+9 Maria Knuckles
+11

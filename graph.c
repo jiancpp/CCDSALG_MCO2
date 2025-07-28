@@ -158,7 +158,8 @@ edgeExists(Graph* graph, char* src, char* dest)
  * @param dest - the destination vertex
  * @return true if a path exists from src to dest, false otherwise
  */
-bool checkPath(Graph* graph, char* src, char* dest) {
+bool 
+checkPath(Graph* graph, char* src, char* dest) {
     Queue path;
 
     // Get index of the source vertex

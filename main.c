@@ -5,6 +5,12 @@
 
 #include "main.h"
 
+/**
+ * Splits an input string into tokens using space and newline as delimiters.
+ *
+ * @param input  - the input string to be tokenized (modified in-place)
+ * @param tokens - array of strings where tokens will be stored
+ */
 void
 tokenizeInput(String256 input, String256 tokens[])
 {
@@ -19,6 +25,12 @@ tokenizeInput(String256 input, String256 tokens[])
     }
 }
 
+
+/**
+ * Clears all tokens in the given array by setting them to empty strings.
+ *
+ * @param tokens - array of strings to clear
+ */
 void
 clearTokens(String256 tokens[]) 
 {

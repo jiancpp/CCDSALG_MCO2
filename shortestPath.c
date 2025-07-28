@@ -138,8 +138,6 @@ createShortestPath(Graph* graph, char* src, char* dest, int* cost)
 void
 printShortestPath(Stack path, int totalCost)
 {
-    printf("\n");
-
     if (!isEmptyStack(&path)) {
         printf("%s", popStack(&path).vertex);
         while (!isEmptyStack(&path)) {

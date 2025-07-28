@@ -1,0 +1,404 @@
+1 Pikachu
+
+1 Charmander
+
+1 Bulbasaur
+
+1 Squirtle
+
+1 Eevee
+
+1 Jigglypuff
+
+1 Meowth
+
+1 Psyduck
+
+1 Snorlax
+
+1 Magikarp
+
+1 Gengar
+
+1 Kadabra
+
+1 Machop
+
+1 Geodude
+
+1 Mewtwo
+
+1 Clefairy
+
+1 Hitmonlee
+
+1 Hitmonchan
+
+1 Lapras
+
+1 Ditto
+
+2 Meowth Ditto 15
+
+2 Meowth Bulbasaur 4
+
+2 Meowth Psyduck 19
+
+2 Meowth Mewtwo 1
+
+2 Ditto Charmander 18
+
+2 Ditto Pikachu 1
+
+2 Ditto Bulbasaur 4
+
+2 Bulbasaur Psyduck 10
+
+2 Bulbasaur Snorlax 8
+
+2 Bulbasaur Pikachu 1
+
+2 Bulbasaur Eevee 15
+
+2 Bulbasaur Squirtle 13
+
+2 Psyduck Mewtwo 12
+
+2 Psyduck Jigglypuff 11
+
+2 Psyduck Snorlax 13
+
+2 Mewtwo Jigglypuff 15
+
+2 Charmander Pikachu 18
+
+2 Charmander Squirtle 14
+
+2 Charmander Magikarp 2
+
+2 Charmander Gengar 11
+
+2 Charmander Kadabra 6
+
+2 Pikachu Squirtle 4
+
+2 Snorlax Eevee 18
+
+2 Snorlax Jigglypuff 6
+
+2 Snorlax Clefairy 19
+
+2 Eevee Squirtle 10
+
+2 Eevee Clefairy 8
+
+2 Squirtle Magikarp 13
+
+2 Squirtle Geodude 1
+
+2 Magikarp Gengar 10
+
+2 Magikarp Geodude 15
+
+2 Magikarp Machop 3
+
+2 Gengar Kadabra 13
+
+2 Gengar Machop 7
+
+2 Kadabra Machop 17
+
+2 Kadabra Lapras 18
+
+2 Clefairy Geodude 7
+
+2 Clefairy Hitmonlee 20
+
+2 Geodude Machop 16
+
+2 Geodude Hitmonlee 19
+
+2 Machop Hitmonlee 9
+
+2 Machop Hitmonchan 8
+
+2 Machop Lapras 5
+
+2 Lapras Hitmonchan 13
+
+2 Hitmonlee Hitmonchan 10
+
+3 Pikachu
+4
+
+3 Charmander
+6
+
+3 Bulbasaur
+7
+
+3 Squirtle
+6
+
+3 Eevee
+4
+
+3 Jigglypuff
+3
+
+3 Meowth
+4
+
+3 Psyduck
+5
+
+3 Snorlax
+5
+
+3 Magikarp
+5
+
+3 Gengar
+4
+
+3 Kadabra
+4
+
+3 Machop
+7
+
+3 Geodude
+5
+
+3 Mewtwo
+3
+
+3 Clefairy
+4
+
+3 Hitmonlee
+4
+
+3 Hitmonchan
+3
+
+3 Lapras
+3
+
+3 Ditto
+4
+
+4 Meowth Ditto
+1
+
+4 Pikachu Magikarp
+0
+
+4 Machop Clefairy
+0
+
+4 Psyduck Bulbasaur
+1
+
+4 Bulbasaur Snorlax
+1
+
+5 Pikachu
+Pikachu
+Bulbasaur
+Charmander
+Ditto
+Squirtle
+Eevee
+Meowth
+Psyduck
+Snorlax
+Gengar
+Kadabra
+Magikarp
+Geodude
+Clefairy
+Mewtwo
+Jigglypuff
+Machop
+Lapras
+Hitmonlee
+Hitmonchan
+
+5 Squirtle
+Squirtle
+Bulbasaur
+Charmander
+Eevee
+Geodude
+Magikarp
+Pikachu
+Ditto
+Meowth
+Psyduck
+Snorlax
+Gengar
+Kadabra
+Clefairy
+Hitmonlee
+Machop
+Mewtwo
+Jigglypuff
+Lapras
+Hitmonchan
+
+6 Magikarp
+Magikarp
+Charmander
+Ditto
+Bulbasaur
+Eevee
+Clefairy
+Geodude
+Hitmonlee
+Hitmonchan
+Lapras
+Kadabra
+Gengar
+Machop
+Squirtle
+Pikachu
+Snorlax
+Jigglypuff
+Mewtwo
+Meowth
+Psyduck
+
+6 Kadabra
+Kadabra
+Charmander
+Ditto
+Bulbasaur
+Eevee
+Clefairy
+Geodude
+Hitmonlee
+Hitmonchan
+Lapras
+Machop
+Gengar
+Magikarp
+Squirtle
+Pikachu
+Snorlax
+Jigglypuff
+Mewtwo
+Meowth
+Psyduck
+
+7 Pikachu Snorlax
+1
+
+7 Charmander Magikarp
+1
+
+7 Bulbasaur Gengar
+1
+
+7 Squirtle Kadabra
+1
+
+7 Eevee Machop
+1
+
+8
+MST(G) = (V, E)
+V = {Bulbasaur, Charmander, Clefairy, Ditto, Eevee, Gengar, Geodude, Hitmonchan, Hitmonlee, Jigglypuff, Kadabra, Lapras, Machop, Magikarp, Meowth, Mewtwo, Pikachu, Psyduck, Snorlax, Squirtle}
+E = {
+     (Bulbasaur, Meowth, 4)
+     (Bulbasaur, Pikachu, 1)
+     (Bulbasaur, Psyduck, 10)
+     (Bulbasaur, Snorlax, 8)
+     (Charmander, Kadabra, 6)
+     (Charmander, Magikarp, 2)
+     (Clefairy, Eevee, 8)
+     (Clefairy, Geodude, 7)
+     (Ditto, Pikachu, 1)
+     (Gengar, Machop, 7)
+     (Geodude, Squirtle, 1)
+     (Hitmonchan, Machop, 8)
+     (Hitmonlee, Machop, 9)
+     (Jigglypuff, Snorlax, 6)
+     (Lapras, Machop, 5)
+     (Machop, Magikarp, 3)
+     (Magikarp, Squirtle, 13)
+     (Meowth, Mewtwo, 1)
+     (Pikachu, Squirtle, 4)
+}
+Total Edge Weight: 104
+
+9 Squirtle Magikarp
+Squirtle -> Magikarp; Total edge cost: 13
+
+9 Machop Snorlax
+Machop -> Magikarp -> Squirtle -> Pikachu -> Bulbasaur -> Snorlax; Total edge cost: 29
+
+9 Pikachu Squirtle
+Pikachu -> Squirtle; Total edge cost: 4
+
+9 Bulbasaur Gengar
+Bulbasaur -> Pikachu -> Squirtle -> Magikarp -> Gengar; Total edge cost: 28
+
+9 Ditto Hitmonchan
+Ditto -> Pikachu -> Squirtle -> Magikarp -> Machop -> Hitmonchan; Total edge cost: 29
+
+9 Meowth Hitmonlee
+Meowth -> Bulbasaur -> Pikachu -> Squirtle -> Geodude -> Hitmonlee; Total edge cost: 29
+
+10
+G = (V, E)
+V = {Bulbasaur, Charmander, Clefairy, Ditto, Eevee, Gengar, Geodude, Hitmonchan, Hitmonlee, Jigglypuff, Kadabra, Lapras, Machop, Magikarp, Meowth, Mewtwo, Pikachu, Psyduck, Snorlax, Squirtle}
+E = {
+     (Bulbasaur, Ditto, 4)
+     (Bulbasaur, Eevee, 15)
+     (Bulbasaur, Meowth, 4)
+     (Bulbasaur, Pikachu, 1)
+     (Bulbasaur, Psyduck, 10)
+     (Bulbasaur, Snorlax, 8)
+     (Bulbasaur, Squirtle, 13)
+     (Charmander, Ditto, 18)
+     (Charmander, Gengar, 11)
+     (Charmander, Kadabra, 6)
+     (Charmander, Magikarp, 2)
+     (Charmander, Pikachu, 18)
+     (Charmander, Squirtle, 14)
+     (Clefairy, Eevee, 8)
+     (Clefairy, Geodude, 7)
+     (Clefairy, Hitmonlee, 20)
+     (Clefairy, Snorlax, 19)
+     (Ditto, Meowth, 15)
+     (Ditto, Pikachu, 1)
+     (Eevee, Snorlax, 18)
+     (Eevee, Squirtle, 10)
+     (Gengar, Kadabra, 13)
+     (Gengar, Machop, 7)
+     (Gengar, Magikarp, 10)
+     (Geodude, Hitmonlee, 19)
+     (Geodude, Machop, 16)
+     (Geodude, Magikarp, 15)
+     (Geodude, Squirtle, 1)
+     (Hitmonchan, Hitmonlee, 10)
+     (Hitmonchan, Lapras, 13)
+     (Hitmonchan, Machop, 8)
+     (Hitmonlee, Machop, 9)
+     (Jigglypuff, Mewtwo, 15)
+     (Jigglypuff, Psyduck, 11)
+     (Jigglypuff, Snorlax, 6)
+     (Kadabra, Lapras, 18)
+     (Kadabra, Machop, 17)
+     (Lapras, Machop, 5)
+     (Machop, Magikarp, 3)
+     (Magikarp, Squirtle, 13)
+     (Meowth, Mewtwo, 1)
+     (Meowth, Psyduck, 19)
+     (Mewtwo, Psyduck, 12)
+     (Pikachu, Squirtle, 4)
+     (Psyduck, Snorlax, 13)
+}
+
+11

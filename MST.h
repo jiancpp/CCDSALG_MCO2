@@ -9,7 +9,7 @@
 struct Graph;
 typedef struct Graph Graph;
 
-Graph createMST(Graph* graph);
+void createMST(Graph* graph, Graph* graphMST);
 int totalEdgeWeight(Graph* graph);
 void printMST(Graph* graph);
 

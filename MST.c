@@ -11,12 +11,11 @@
  * Performs prim's algorithm to create the minimum spanning tree (MST).
  * 
  * @param graph basis of the minimum spanning tree
- * @return the minimum spanning tree graph
+ * @param graphMST the minimum spanning tree graph
  */
-Graph
-createMST(Graph* graph)
+void
+createMST(Graph* graph, Graph* graphMST)
 {
-    Graph graphMST = createGraph();
     Heap heap;
 
     int i, idxA, idxB, vertexIdx = 0;
@@ -34,11 +33,11 @@ createMST(Graph* graph)
 
     // Step 1: Determine an arbitrary vertex as the starting vertex of the MST.
     curVertex = &graph->vertexList[vertexIdx];
-    addVertex(&graphMST, curVertex->vertex); // Adds first vertex
+    addVertex(graphMST, curVertex->vertex); // Adds first vertex
     isVisited[vertexIdx] = true;
 
     // Repeats while the vertices are not complete
-    while (graphMST.numVertices < graph->numVertices) {
+    while (graphMST->numVertices < graph->numVertices) {
         curEdgeNode = curVertex->edgeListHead;
 
         // Repeats for all edge nodes
@@ -52,7 +51,7 @@ createMST(Graph* graph)
 
         do {
             if (heap.heapSize == 0) // Returns MST once heap is empty
-                return graphMST;
+                return;
 
             minEdge = HeapExtractMinimum(&heap);
 
@@ -62,20 +61,18 @@ createMST(Graph* graph)
         } while (isVisited[idxB]);
 
         if (!isVisited[idxB]) {
-            addVertex(&graphMST, minEdge.vertex_b->vertex); // Adds vertex to MST graph
+            addVertex(graphMST, minEdge.vertex_b->vertex); // Adds vertex to MST graph
             curVertex = &graph->vertexList[idxB];
             isVisited[idxB] = true;
         }
 
-        idxA = getVertexIdx(&graphMST, minEdge.vertex_a->vertex);
-        idxB = getVertexIdx(&graphMST, minEdge.vertex_b->vertex);
-        strcpy(a, graphMST.vertexList[idxA].vertex);
-        strcpy(b, graphMST.vertexList[idxB].vertex);
+        idxA = getVertexIdx(graphMST, minEdge.vertex_a->vertex);
+        idxB = getVertexIdx(graphMST, minEdge.vertex_b->vertex);
+        strcpy(a, graphMST->vertexList[idxA].vertex);
+        strcpy(b, graphMST->vertexList[idxB].vertex);
 
-        addEdge(&graphMST, a, b, minEdge.weight); // Adds minimum edge to MST graph
+        addEdge(graphMST, a, b, minEdge.weight); // Adds minimum edge to MST 
     }
-
-    return graphMST;
 }
 
 /**
@@ -131,6 +128,7 @@ printMST(Graph* graph)
                                       temp.vertex_b->vertex,
                                       temp.weight);
     }
+
     printf("}\n");
     
     printf("Total Edge Weight: %d\n", totalEdgeWeight(graph));

@@ -79,7 +79,7 @@ int main()
                 printf("%d\n", checkPath(&graph, tokens[1], tokens[2]));
                 break;
             case 8:
-                graphMST = createMST(&graph);
+                createMST(&graph, &graphMST);
                 printMST(&graphMST);
                 break;
             case 9:

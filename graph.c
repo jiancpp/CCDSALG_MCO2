@@ -97,7 +97,7 @@ addEdge(Graph* graph, char* vertex1, char* vertex2, int weight)
     insertEdgeAtStart(&tempVertex2->edgeListHead, tempEdge2);    
 
     // Add edge to graph's edge list (Arrange lexicographically)
-    if (strcmp(tempVertex1, tempVertex2) < 0) {
+    if (strcmp(tempVertex1->vertex, tempVertex2->vertex) < 0) {
         graph->edgeList[graph->numEdges] = createEdge(tempVertex1, tempVertex2, weight);
     }
     else {
@@ -200,20 +200,9 @@ void
 sortEdges(Graph* graph) {
     int i, j, numEdges;
     char *a1, *a2, *b1, *b2;
-    Vertex* tempVertex;
     Edge tempEdge;
 
     numEdges = graph->numEdges;
-
-
-    for (i = 0; i < numEdges; i++) {
-        // Sort vertices within an edge
-        if (strcmp(graph->edgeList[i].vertex_a->vertex, graph->edgeList[i].vertex_b->vertex) > 0) {
-            tempVertex = graph->edgeList[i].vertex_a;
-            graph->edgeList[i].vertex_a = graph->edgeList[i].vertex_b;
-            graph->edgeList[i].vertex_b = tempVertex;
-        }
-    }
 
     // Sort edges
     for (i = 0; i < numEdges - 1; i++) {

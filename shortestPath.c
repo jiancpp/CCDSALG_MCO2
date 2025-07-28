@@ -139,7 +139,7 @@ void
 printShortestPath(Stack path, int totalCost)
 {
     printf("\n");
-    
+
     if (!isEmptyStack(&path)) {
         printf("%s", popStack(&path).vertex);
         while (!isEmptyStack(&path)) {
